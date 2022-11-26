@@ -6,6 +6,9 @@
     "esModuleInterop": true,
     "allowJs": true,
     // "strictNullChecks": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "paths": {
+      "@/*": ["*"],
+    }
   }
 }
