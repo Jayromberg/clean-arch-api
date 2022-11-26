@@ -1,6 +1,7 @@
 import { Controller } from "@/presentation/protocols/Controller";
-import { Validation } from "@/presentation/helpers/validators/validation";
 import { HttpRequest, HttpResponse } from "@/presentation/protocols/http";
+import { Validation } from "@/presentation/helpers/validators/validation";
+import { badRequest } from "@/presentation/helpers/http-helpers";
 
 export default class SignUpController implements Controller {
   private readonly validation: Validation;
@@ -9,7 +10,8 @@ export default class SignUpController implements Controller {
     this.validation = validation;
   } 
 
-  handle(httpRequest: HttpRequest): Promise<HttpResponse> {
-    throw new Error("Method not implemented.");
+  async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
+    const error = this.validation.validate(httpRequest.body);
+    if (error) badRequest(error);
   }
 }
