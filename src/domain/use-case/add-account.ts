@@ -1,4 +1,4 @@
-import { AccountModel } from '@/domain/entity/account';
+import { AccountModel } from '../entity/account';
 
 export interface AddAccountModel extends Omit<AccountModel, 'id'> {}
 

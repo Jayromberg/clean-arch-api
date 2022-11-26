@@ -1,10 +1,8 @@
 module.exports = {
   "extends": "@istanbuljs/nyc-config-typescript",
   "include": [
-    "src/**/!(*.test.*).[tj]s?(x)"
-  ],
-  "exclude": [
-    "src/_tests_/**/*.*"
+    "src/domain",
+    "src/presentation"
   ],
   "reporter": [
     "text",
@@ -14,6 +12,4 @@ module.exports = {
     "lcov"
   ],
   "all": true,
-  "check-coverage": true,
-  "report-dir": "coverage"
 }
