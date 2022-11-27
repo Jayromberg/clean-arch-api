@@ -2,7 +2,7 @@ import chai from 'chai';
 // import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 
-import SignUpController from "../presentation/controller/SignUp";
+import SignUpController from "../presentation/controllers/SignUp";
 import { ValidationComposite } from "../presentation/helpers/validators/validation-composite";
 import { RequiredFieldsValidation } from "../presentation/helpers/validators/required-fields-validation";
 
