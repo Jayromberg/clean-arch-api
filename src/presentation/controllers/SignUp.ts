@@ -1,4 +1,4 @@
-import { Controller } from "../protocols/Controller";
+import { Controller } from "../protocols/controller";
 import { HttpRequest, HttpResponse } from "../protocols/http";
 import { Validation } from "../helpers/validators/validation";
 import { badRequest, created } from "../helpers/http-helpers";
