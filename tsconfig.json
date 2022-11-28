@@ -9,8 +9,5 @@
     "sourceMap": true,
     "rootDir": "src",
     "baseUrl": "src",
-    "paths": {
-      "@/*": ["*"],
-    }
   }
 }

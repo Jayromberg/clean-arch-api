@@ -2,7 +2,9 @@ module.exports = {
   "extends": "@istanbuljs/nyc-config-typescript",
   "include": [
     "src/domain",
-    "src/presentation"
+    "src/presentation",
+    "src/data",
+    "src/infra"
   ],
   "reporter": [
     "text",

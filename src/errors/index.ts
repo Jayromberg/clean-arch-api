@@ -13,3 +13,9 @@ export class MissingParamError extends BaseError {
     super(400, `Missing param: ${paramName}`)
   }
 }
+
+export class ConflictEmailError extends BaseError { 
+  constructor (email: string) {
+    super(409, `O email ${email} já está cadastrado`)
+  }
+}
