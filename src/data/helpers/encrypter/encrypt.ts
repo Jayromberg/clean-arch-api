@@ -1,3 +1,3 @@
 export interface Encrypt {
-  encrypt (input: string): Promise<string>
+  encrypt (password: string): Promise<string>
 }
