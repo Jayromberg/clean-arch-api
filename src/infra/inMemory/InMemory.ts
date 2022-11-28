@@ -5,8 +5,9 @@ export default class InMemory<T extends columnDb> implements DataBase<T> {
   private static id: number = 0;
 
   set(value: T): T {
-    this.db.push({ id: InMemory.id, ...value });
-    return value;
+    const id = InMemory.id =+ 1;
+    this.db.push({ id, ...value });
+    return this.get(id);
   }
 
   get(id: number): T {
