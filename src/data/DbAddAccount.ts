@@ -18,7 +18,7 @@ export default class DbAddAccount implements AddAccount {
     const { name, email, password  } = account;
     const isUser = await this.addUserRepo.findByEmail(email);
 
-    if(isUser) new ConflictEmailError(email);
+    if(isUser) throw new ConflictEmailError(email);
 
     const hash = await this.encrypter.encrypt(password)
 

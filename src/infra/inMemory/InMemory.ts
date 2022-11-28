@@ -19,8 +19,4 @@ export default class InMemory<T extends columnDb> implements DataBase<T> {
     const [data] = this.db.filter((data) => data.email === email);
     return data;
   }
-
-  getAll(): [] | T[] {
-    return this.db;
-  }
 }

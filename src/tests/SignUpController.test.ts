@@ -39,6 +39,8 @@ describe('SignUp Controller', () => {
       email: 'test@gmail.com',
       password: '$2b$12$mXvF/DEAIyyGV/ExgRRfQeivu8NU8digum/93YuV/CNSEMNg0t2vy',
     })
+
+    sinon.restore();
   })
 
   it('Deveria lançar um badRequest por falta do campo email', async () => {
@@ -62,5 +64,33 @@ describe('SignUp Controller', () => {
 
     expect(response.statusCode).to.be.equal(400);
     expect(response.body).to.be.deep.equal({ message: "Missing param: email" })
+  })
+
+  it('Deveria lançar um badRequest por email já cadastrado', async () => {
+    const mReq: any = {
+      body: {
+        name: 'Jayro',
+        email: 'test@gmail.com',
+        password: 'test',
+      }
+    };
+
+    sinon.stub(AddUserInMemory.prototype, 'findByEmail').resolves({
+      id: 1,
+      name: 'Jayro',
+      email: 'test@gmail.com',
+      password: 'test',
+    })
+
+    const db = new AddUserInMemory();
+    const encrypter = new BCrypt();
+    const data = new DbAddAccount(db, encrypter);
+    const fieldValidator = new RequiredFieldsValidation(["name", "email", "password"]);
+    const validator = new ValidationComposite([fieldValidator]);
+    const controller = new SignUpController(data, validator);
+    const response = await controller.handle(mReq)
+
+    expect(response.statusCode).to.be.equal(409);
+    expect(response.body).to.be.deep.equal({ message: "O email test@gmail.com já está cadastrado" })
   })
 })

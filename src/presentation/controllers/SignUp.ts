@@ -15,12 +15,13 @@ export default class SignUpController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     const error = this.validation.validate(httpRequest.body);
-    
     if (error) return badRequest(error);
-
-    const { name, email, password } = httpRequest.body
-
-    const newAccount = await this.addAccount.add({ name, email, password })
-    return created(newAccount)
+    try {   
+      const { name, email, password } = httpRequest.body
+      const response = await this.addAccount.add({ name, email, password })
+      return created(response)
+    } catch (error) {
+      return badRequest(error);
+    }
   }
 }
