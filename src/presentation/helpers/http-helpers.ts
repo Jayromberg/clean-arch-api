@@ -7,5 +7,5 @@ export const created = (body: any): HttpResponse => ({
 
 export const badRequest = (error: any): HttpResponse => ({
   body: { message: error.message },
-  statusCode: error.status || 500,
+  statusCode: error.status,
 })

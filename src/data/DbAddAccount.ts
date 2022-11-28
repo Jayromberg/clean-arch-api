@@ -2,7 +2,7 @@ import { AccountModel } from "../domain/entity/account";
 import { AddAccount, AddAccountModel } from "../domain/use-case/add-account";
 import { Encrypt } from "./helpers/encrypter/encrypt";
 import { AddUserRepo } from "./protocols/addUserRepo";
-import { ConflictEmailError } from "errors";
+import { ConflictEmailError } from "../errors";
 
 export default class DbAddAccount implements AddAccount {
   private readonly encrypter: Encrypt;
@@ -14,10 +14,11 @@ export default class DbAddAccount implements AddAccount {
   }
 
   async add(account: AddAccountModel): Promise<AccountModel> {
+    
     const { name, email, password  } = account;
     const isUser = await this.addUserRepo.findByEmail(email);
 
-    if(isUser) new ConflictEmailError(email);
+    if(isUser) throw new ConflictEmailError(email);
 
     const hash = await this.encrypter.encrypt(password)
 
@@ -25,5 +26,3 @@ export default class DbAddAccount implements AddAccount {
     return newAccount;
   }
 }
-
-// 52

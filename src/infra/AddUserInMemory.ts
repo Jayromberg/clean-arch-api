@@ -12,7 +12,7 @@ export default class AddUserInMemory implements AddUserRepo {
   }
 
   async create(account: AddAccountModel): Promise<AccountModel> {
-    const newUser = this._model.set({ id: null, ...account })
+    const newUser = this._model.set(account as AccountModel);
     return newUser;
   }
 }
