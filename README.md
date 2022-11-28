@@ -1,5 +1,5 @@
 # Clean Architecture API
-O Clean Arch é uma modelo de API CRUD que segue os princípios SOLID. Essa API por natureza não possui nenhum vinculo com qualquer framework.
+O Clean Arch é uma modelo de API que segue os princípios SOLID. Essa API por natureza não possui nenhum vinculo com qualquer framework.
 
 ![Captura de tela de 2022-11-27 10-20-34](https://user-images.githubusercontent.com/95861623/204137946-004a224a-1c08-4b1a-816c-630c2cfecc9e.png)
 
