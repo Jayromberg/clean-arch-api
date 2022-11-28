@@ -1,5 +1,5 @@
 export interface columnDb {
-  id: number;
+  id?: string | number;
   email: string;
 }
 

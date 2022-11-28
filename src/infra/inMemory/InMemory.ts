@@ -1,4 +1,4 @@
-import { DataBase, columnDb } from './protocols/InMemoryDb';
+import { DataBase, columnDb } from './IMemoryDb';
 
 export default class InMemory<T extends columnDb> implements DataBase<T> {
   private db: Array<T> = []
